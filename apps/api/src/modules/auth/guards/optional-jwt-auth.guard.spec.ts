@@ -2,7 +2,7 @@ import { ExecutionContext } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import { OptionalJwtAuthGuard } from './optional-jwt-auth.guard';
-import { ACCESS_TOKEN_COOKIE } from '../auth.constants';
+// ACCESS_TOKEN_COOKIE not used directly here
 
 describe('OptionalJwtAuthGuard', () => {
   let guard: OptionalJwtAuthGuard;
