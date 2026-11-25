@@ -44,6 +44,16 @@ describe('Metadata and Catalog Integrity (Issue: Add integrity tests for tools, 
 
   it('validates examples.ts contains expected constants and structures', () => {
     expect(examples).toBeDefined();
+    if (Array.isArray(examples)) {
+      for (const item of examples) {
+        expect(item).toBeDefined();
+        if (typeof item === 'object' && item !== null) {
+          expect((item as any).title ?? (item as any).name ?? (item as any).id).toBeDefined();
+        }
+      }
+    } else if (typeof examples === 'object' && examples !== null) {
+      expect(Object.keys(examples).length).toBeGreaterThan(0);
+    }
   });
 
   it('validates tool-docs.ts metadata: every tool has matching doc entries and valid slugs', () => {
